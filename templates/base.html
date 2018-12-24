@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <title>Maths GCSE Tier F Quiz</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('quiz') }}">Quiz</a></li>
+            <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
+            <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+            <li><a href="{{ url_for('newquestions') }}">New Questions</a></li>
+        </ul>
+    </nav>
+
+    {% block content %} {% endblock %}
+</body>
+
+</html>
