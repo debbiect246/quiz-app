@@ -414,7 +414,17 @@ footer .copyright {
   border-color: #00657b !important;
 }
 
-.btn-lg {
-  font-size: 16px;
-  padding: 25px 35px;
+.btn-lg 
+
+#welcome{
+  display: flex;
+  font-family: sans-serif;
+  font-size: 900;
+  text-align: center;
+  
+}
+
+.feedback{
+  font-size: 700;
+  text-align: center;
 }
