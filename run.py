@@ -1,8 +1,9 @@
 import os
-from flask import Flask, render_template
+import json
+from flask import Flask, render_template, request, flash
 
 app = Flask(__name__)
-
+app.secret_key = 'some_secret'
 
 @app.route('/')
 def index():
@@ -18,9 +19,14 @@ def leaderboard():
     return render_template("leaderboard.html")
 
 
-@app.route('/feedback')
+@app.route('/feedback', methods=["GET", "POST"])
 def feedback():
-    return render_template("feedback.html")
+    if request.method == "POST":
+        flash("Thanks {}, we have received your message".format(
+            request.form["name"]
+        ))
+    return render_template("feedback.html", page_title="Feedback")
+    
 
 
 @app.route('/newquestions')
