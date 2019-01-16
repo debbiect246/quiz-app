@@ -3,11 +3,20 @@
     
 <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
 
         <p>Want to give me some more questions to add to the questions already here? Fill out the form below to add a question and I will get back to you as soon as possible!</p>
         <p>Sorry I can only accept one question and answer from each student.  Please don't forget to type in an answer as well!</p>
 
-        <form>
+        <form method="POST" name="sentMessage" id="contactForm">
             <div class="control-group">
                 <div class="form-group floating-label-form-group controls">
                     <label>Name</label>

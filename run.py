@@ -29,9 +29,14 @@ def feedback():
     
 
 
-@app.route('/newquestions')
+@app.route('/newquestions', methods=["GET", "POST"])
 def newquestions():
-    return render_template("newquestions.html")
+    if request.method == "POST":
+        flash("Thanks {}, we have received your question".format(
+            request.form["name"]
+        ))
+    return render_template("newquestions.html", page_title="Newquestions")
+    
 
 
 if __name__ == '__main__':
