@@ -1,19 +1,26 @@
 import os
 import json
 from flask import Flask, render_template, request, flash
+from random import shuffle
 
-app = Flask(__name__)
+app = Flask(__name__) 
 app.secret_key = 'some_secret'
+
+with open("data/quizdata.json", "r") as read_file:
+     data = json.load(read_file)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", page_title="Home")
 
 
-@app.route('/quiz')
+@app.route('/quiz', methods=["GET", "POST"])
 def quiz():
-    return render_template("quiz.html")
-    
+    qw = data 
+    return render_template("quiz.html", page_title="Quiz", data = qw)
+   
+
+
 @app.route('/leaderboard')
 def leaderboard():
     return render_template("leaderboard.html")

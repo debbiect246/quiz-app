@@ -1,0 +1,12 @@
+[
+ {"question": "How many degrees in a triangle?", "answer": "180"},
+ {"question": "How many centimetres in a metre?", "answer": "100"},
+ {"question": "How many degrees in a quadrilateral?", "answer": "360"},
+ {"question": "How many sides does a triangle have?", "answer": "3"},
+ {"question": "What is an approximation to pi to 3 dp", "answer": "3.142"},
+ {"question": "How many minutes between 9.30pm and 10.18pm?", "answer": "48"},
+ {"question": "How far do I travel at 40mph in 3 hours?", "answer": "120"},
+ {"question": "What is 2x + 5x - 4x?", "answer": "3x"},
+ {"question": "What is the result of 5+4x9?", "answer": "41"},
+ {"question": "If 60 is divided in the ratio 2:3 what is the smaller share?", "answer": "24"}
+]
