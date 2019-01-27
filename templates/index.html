@@ -3,12 +3,27 @@
 <div id="welcome">
     <p>Welcome to this foundation maths quiz</p>
     <p>You have a chance to test yourself on the foundation topics you have learnt</p>
-    <p>using the quiz on the next page.</p>
-    <p>On each page you will find reminders of the topics you have learnt</p>
-    <p>You may find some of these useful when doing the quiz, so please</p>
-    <p>move between pages at the start and end of the quiz to refresh your memory.</p
+    <p>Please log in using your first name below - you don't need a password.</p>
+    <p>The quiz will cover some of the topics on the maths tube map below</p>
     <img src='static/img/mathstubemap.jpg' alt="Maths tube map" width="500" height="333">
 </div>
 
+<form method="POST">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+    <button>Go to quiz</button>
+</form>
+
+
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 
 {% endblock %}

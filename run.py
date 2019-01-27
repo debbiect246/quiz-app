@@ -1,23 +1,65 @@
 import os
 import json
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect, session, url_for
+
 from random import shuffle
 
 app = Flask(__name__) 
 app.secret_key = 'some_secret'
 
-with open("data/quizdata.json", "r") as read_file:
-     data = json.load(read_file)
+def readfile():
+    with open("data/quizdata.json", "r") as read_file:
+        data = json.load(read_file)
+        return data
 
-@app.route('/')
+@app.route("/", methods = ["GET", "POST"])
 def index():
-    return render_template("index.html", page_title="Home")
+    """Main page with instructions"""
+    if request.method == "POST":
+        session["username"] = request.form["username"]
 
+        if "username" in session:
+            return redirect(url_for("quiz", username=session["username"]))
+        
+    else:
+        return render_template("index.html")
+    
+@app.route("/<username>", methods = ["GET", "POST"])
+def user(username):
+    """Display welcome message"""
+    if request.method == "POST":
+        return'<h1>Welcome ' + username + ' to the quiz</h1>'
+    return render_template("index.html")
+ 
+def logout():
+    if session:
+        session.clear()
+        flash("You have logged out")
+        return render_template("index.html")
+     
+     
 
-@app.route('/quiz', methods=["GET", "POST"])
-def quiz():
-    qw = data 
-    return render_template("quiz.html", page_title="Quiz", data = qw)
+@app.route('/quiz/<username>', methods=["GET", "POST"])
+
+def quiz(username):
+    numRight = 0
+    data=readfile()
+    shuffle(data)
+    if username==session["username"]:
+        for riddle in data:
+        
+            render_template("quiz.html", page_title="Quiz", data=riddle, username=username)
+            flash(riddle["question"])
+            print(riddle)
+            if request.method == "POST":
+                request.form["userAnswer"]
+                userAnswer=request.form["userAnswer"]
+                if userAnswer==riddle["answer"]:
+                    flash("Your answer is correct")
+                    numRight +=1
+                else:
+                    flash("Your answer is incorrect")
+            return render_template("quiz.html")
    
 
 
