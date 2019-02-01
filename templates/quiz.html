@@ -5,6 +5,12 @@
 <div class= "quizheading"> Quiz Questions</div>
 <div>{{data}}</div>
 
+<form method="POST">
+    <label for="userAnswer"> Your Answer:</label>
+    <input type="text" id="userAnswer" name="userAnswer">
+    <button>submit answer</button>
+</form>
+
 
 
 {% with messages = get_flashed_messages() %}
