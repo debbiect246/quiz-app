@@ -42,24 +42,19 @@ def logout():
 @app.route('/quiz/<username>', methods=["GET", "POST"])
 
 def quiz(username):
-    numRight = 0
+    
     data=readfile()
     shuffle(data)
     if username==session["username"]:
-        for riddle in data:
+        if request.method == 'Post':
+            
+            return render_template("quiz.html",page_title="Quiz", data=data, username=username)
         
-            render_template("quiz.html", page_title="Quiz", data=riddle, username=username)
-            flash(riddle["question"])
-            print(riddle)
-            if request.method == "POST":
-                request.form["userAnswer"]
-                userAnswer=request.form["userAnswer"]
-                if userAnswer==riddle["answer"]:
-                    flash("Your answer is correct")
-                    numRight +=1
-                else:
-                    flash("Your answer is incorrect")
-            return render_template("quiz.html")
+        else: 
+            #return a template with the riddles
+            return render_template("quiz.html",page_title="Quiz", data=data, username=username)
+    else:
+        return render_template("quiz.html")
    
 
 
@@ -84,7 +79,7 @@ def newquestions():
         flash("Thanks {}, we have received your question".format(
             request.form["name"]
         ))
-    return render_template("newquestions.html", page_title="Newquestions")
+    return render_template("newquestions.html", page_title="New questions")
     
 
 
@@ -92,6 +87,3 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
-            
-
-            

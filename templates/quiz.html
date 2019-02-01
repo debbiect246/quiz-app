@@ -1,36 +1,20 @@
 {% extends 'base.html' %} {% block content %}
-    <h1>Quiz</h1>
-<div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-    
-    <p>The quiz consists of 10 questions about numbers, algebra and shapes</p>
-    <p>The 10 questions will appear one by one below</p>
-    <p>Please type your answer into the answer box then press the submit button</p>
-    <p>You only need to type a single number into the answer box, units are not needed.</p>
-    <p>At the end of the quiz your score will be shown.</p>
-    <p>If you have done well your score will appear on the leaderboard on the leaderboard page.</p>
-    <p>To log out just close the browser once you have finished the quiz and looked up your score on the leaderboard.</p>
-    
-    </div>
-</div>
+    <h1>{{page_title}}</h1>
 
 
-<div><p>{{data}}</p></div>
+<div class= "quizheading"> Quiz Questions</div>
+<div>{{data}}</div>
 
 
-<br><br><br><br>
 
- <form method="POST" answer="answer">
-     
-    <div>Answer:<br></div>
-    <div><input type="text" name="answer"></div>
-    <br>
-    <button type="submit" class="btn btn-primary" >Submit</button>
- 
- </form>
- 
- 
-
- 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %} 
 
 {% endblock %}

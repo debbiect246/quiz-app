@@ -5,7 +5,7 @@
  */
 
 body {
-  font-size: 20px;
+  font-size: 14px;
   color: #212529;
   font-family: 'Lora', 'Times New Roman', serif;
 }
@@ -427,4 +427,13 @@ footer .copyright {
 .feedback{
   font-size: 700;
   text-align: center;
+}
+
+.quizheading {
+  font-weight: bold;
+}
+
+.masthead{
+  height: 70%;
+}
 }
