@@ -6,7 +6,7 @@ Werkzeug==0.15.3
 appJar==0.93.0
 chardet==2.2.1
 colorama==0.2.5
-html5lib==0.999
+html5lib==0.99999999
 itsdangerous==1.1.0
 pycurl==7.19.3
 pygobject==3.12.0
