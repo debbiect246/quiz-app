@@ -2,7 +2,7 @@ Click==7.0
 Flask==1.0.2
 Jinja2==2.11.3
 MarkupSafe==1.1.0
-Werkzeug==0.15.3
+Werkzeug==0.15.5
 appJar==0.93.0
 chardet==2.2.1
 colorama==0.2.5
